@@ -13,9 +13,17 @@ public class Main
     public static void main( String[] args ) throws Exception
     {
         int port = 8080;
-
+        if(args !=null){
+            try {
+                String portStr = args[0];
+                port = Integer.parseInt(portStr);
+            }catch (Exception e){
+                //
+            }
+        }
         PsnHttpServer psnHttpServer = new PsnHttpServer(port);
-        log.info("PSN Http server listening on 8080...");
+        log.info("PSN Http server listening on "+port+"...");
         psnHttpServer.start();
+
     }
 }

@@ -23,7 +23,6 @@ public class PsnHttpServerHandler extends ChannelInboundHandlerAdapter{
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try{
-            // do something with msg
             if(msg instanceof HttpRequest){
                 this.request = (HttpRequest)msg;
                 log.debug("uri:"+this.request.getUri());
