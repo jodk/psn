@@ -4,7 +4,6 @@ import com.jolbox.bonecp.BoneCPDataSource;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +29,7 @@ public class DbPool {
         boneCPDataSource.setPartitionCount(JdbcConfig.bonecpPartitionCount());
         boneCPDataSource.setMaxConnectionsPerPartition(JdbcConfig.bonecpMaxConnectionPerPartition());
         boneCPDataSource.setMinConnectionsPerPartition(JdbcConfig.bonecpMinConnectionPerPartition());
-        boneCPDataSource.setConnectionTimeoutInMs(JdbcConfig.bonecpConnectionTimeout());
+        boneCPDataSource.setConnectionTimeout(JdbcConfig.bonecpConnectionTimeout(),TimeUnit.MINUTES);
         boneCPDataSource.setIdleConnectionTestPeriodInMinutes(JdbcConfig.bonecpIdleConnectionTestPeriod());
     }
     private static boolean isCached(Db db){
