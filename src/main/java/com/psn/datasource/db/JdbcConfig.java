@@ -77,5 +77,58 @@ public class JdbcConfig {
         }
         return min;
     }
-    
+    public static int bonecpAcquireIncrement(){
+        int increment = Integer.parseInt(props.getProperty("bonecp.acquireIncrement","3"));
+        if(increment == 3){
+            logger.info("default bonecp acquire increment 3 if no set");
+        }
+        return increment;
+    }
+
+    /**
+     * unit by minute
+     * @return
+     */
+    public static int bonecpConnectionTimeout(){
+        int timeout = Integer.parseInt(props.getProperty("bonecp.connectionTimeout","60"));
+        if(timeout==60){
+            logger.info("default bonecp connection timeout 60 minute if no set");
+        }
+        return timeout;
+    }
+
+    /**
+     * unit by minute
+     * @return
+     */
+    public static int bonecpMaxConnectionAge(){
+        int maxAge = Integer.parseInt(props.getProperty("bonecp.maxConnectionAge","60"));
+        if(maxAge == 60){
+            logger.info("default bonecp max connection age 60 minute if no set");
+        }
+        return maxAge;
+    }
+    /**
+     * unit by minute
+     * @return
+     */
+    public static int bonecpMaxIdleAge(){
+        int maxIdleAge = Integer.parseInt(props.getProperty("bonecp.idleMaxAge","60"));
+        if(maxIdleAge == 60){
+            logger.info("default bonecp max idle age 60 minute if no set");
+        }
+        return maxIdleAge;
+    }
+
+    /**
+     * unit by minute
+     * @return
+     */
+    public static int bonecpIdleConnectionTestPeriod(){
+        int testPeriod = Integer.parseInt(props.getProperty("bonecp.idleConnectionTestPeriod","30"));
+        if(testPeriod == 30){
+            logger.info("default idle connection test period 30 minute if no set");
+        }
+        return testPeriod;
+    }
 }
